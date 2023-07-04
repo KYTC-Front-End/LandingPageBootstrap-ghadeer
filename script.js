@@ -108,36 +108,13 @@ const loadQuestion = () => {
     option3.innerText = questionList.c;
     option4.innerText = questionList.d;
 }
-function getLeaderboardData() {
-    var leaderboardDataString = localStorage.getItem("leaderboardData");
-    return leaderboardDataString ? JSON.parse(leaderboardDataString) : [];
-  }
-  
-  function saveLeaderboardData(data) {
-    localStorage.setItem("leaderboardData", JSON.stringify(data));
-  }
-  
-  var leaderboardData = getLeaderboardData();
-  
-  var playerName = ""; 
-  var playerScore = 0; 
-  
-  function renderLeaderboard() {
-    var leaderboardList = document.getElementById("leaderboardList");
-    leaderboardList.innerHTML = "";
-  
-    leaderboardData.forEach(function(player) {
-      var listItem = document.createElement("li");
-      listItem.innerHTML = player.name + " - " + player.score;
-      leaderboardList.appendChild(listItem);
-    });
-  }
-  
+
+  // Function to start the quiz
   function startQuiz() {
     playerName = prompt("Please enter your name:");
   
     if (playerName !== null && playerName !== "") {
-      r
+      
       document.querySelector("button").style.display = "none";
     }
   }
@@ -197,3 +174,26 @@ submit.addEventListener('click', ()=>{
     
 });
 
+function addHighscore(score) {
+    var name = prompt("Congratulations! You achieved a high score! Please enter your name:");
+  
+    if (!name || name.trim() === "") {
+        alert("Please enter a valid name.");
+        return;
+    }
+
+    var newHighscore = {
+        name: name,
+        score: score
+    };
+
+    highscores.push(newHighscore);
+
+    highscores.sort(function(a, b) {
+        return b.score - a.score;
+    });
+
+    localStorage.setItem('highscores', JSON.stringify(highscores));
+
+    displayHighscores();
+}
