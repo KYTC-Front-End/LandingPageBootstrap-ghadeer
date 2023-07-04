@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>quiez </title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="quiz.css">
 </head>
 <body>
     <div class="main-div">
@@ -13,10 +13,20 @@
   
   <button onclick="startQuiz()">Start Quiz</button>
 
-            <div id="leaderboard">
-                <h2>Leaderboard</h2>
-                <ol id="leaderboardList"></ol>
-            </div>
+  
+  <h1>Highscore Board</h1>
+  <table id="highscores">
+      <thead>
+          <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Score</th>
+          </tr>
+      </thead>
+      <tbody id="scoreTableBody">
+        
+      </tbody>
+  </table>
 
             <h2 class="question">Here Are Some Question</h2>
             <ul>
